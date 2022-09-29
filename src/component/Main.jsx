@@ -1,7 +1,8 @@
 import Layout from "./Layout/Layout";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import LeaseList from "./LeaseList";
+import Contract from "./Contract";
 
 const Main = () => {
   return (
@@ -10,6 +11,7 @@ const Main = () => {
         <Route path="/" element={<Home />} />
         <Route path="/LeaseList" element={<LeaseList />} />
       </Route>
+      <Route path="/Contract" element={<Contract />} />
     </Routes>
   );
 };

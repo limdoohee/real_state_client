@@ -1,12 +1,13 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const LeaseList = () => {
   const [list, setList] = useState([]);
   const url = `/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptRent?_wadl
     &type=xml&LAWD_CD=11110&DEAL_YMD=202208&serviceKey=${process.env.REACT_APP_API_KEY}`;
 
-  const fetchApi = async () => {
+  useEffect(() => {
     try {
       axios(url, {
         method: "GET",
@@ -23,11 +24,13 @@ const LeaseList = () => {
     } catch (e) {
       console.log(e);
     }
-  };
+  }, []);
 
   return (
     <div>
-      <button onClick={fetchApi}>리스트</button>
+      <Link to="/Contract">
+        <button>계약서 쓰기</button>
+      </Link>
       <ul>
         {list.map((item) => (
           <div>
