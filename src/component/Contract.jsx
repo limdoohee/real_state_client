@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import ReactToPrint from "react-to-print";
 import React, { useRef } from "react";
@@ -16,7 +15,6 @@ const Contract = () => {
   return (
     <>
       <Layout>
-        <ContractContents />
         {/* button to trigger printing of target component */}
         <ReactToPrint
           trigger={() => <input type="button" value="인쇄" />}
@@ -27,6 +25,7 @@ const Contract = () => {
         <div style={{ display: "none" }}>
           <ComponentToPrint ref={(el) => (componentRef = el)} />
         </div>
+        <ContractContents />
       </Layout>
     </>
   );
