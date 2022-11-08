@@ -5,9 +5,15 @@ const MemberList = () => {
   const [users, setUsers] = useState([""]);
 
   useEffect(() => {
-    axios.get("/api/test").then((res) => {
-      setUsers(res.data);
-    });
+    axios
+      .get("/api/userList", {
+        params: {
+          id: "sys",
+        },
+      })
+      .then((res) => {
+        setUsers(res.data);
+      });
   }, []);
 
   return (

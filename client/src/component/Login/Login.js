@@ -62,13 +62,13 @@ const Login = (props) => {
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
 
-    setFormIsValid(emailState.value.includes("@") && passwordState.isValid);
+    // setFormIsValid(emailState.value.includes("@") && passwordState.isValid);
   };
 
   const passwordChangeHandler = (event) => {
     dispatchPassword({ type: "USER_INPUT", val: event.target.value });
 
-    setFormIsValid(emailState.value.includes("@") && passwordState.isValid);
+    // setFormIsValid(emailState.value.includes("@") && passwordState.isValid);
   };
 
   const validateEmailHandler = () => {
@@ -94,7 +94,7 @@ const Login = (props) => {
       >
         <label htmlFor="email">E-Mail</label>
         <input
-          type="email"
+          type="text"
           id="email"
           value={emailState.value}
           onChange={emailChangeHandler}
@@ -116,7 +116,11 @@ const Login = (props) => {
         />
       </div>
       <div className={classes.actions}>
-        <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+        <Button
+          type="submit"
+          className={classes.btn}
+          // disabled={!formIsValid}
+        >
           로그인
         </Button>
       </div>

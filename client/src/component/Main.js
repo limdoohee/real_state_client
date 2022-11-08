@@ -7,6 +7,7 @@ import LeaseList from "./LeaseList";
 import MemberList from "./MemberList";
 import Contract from "./Contract";
 import ContractDetail from "./ContractDetail";
+import axios from "axios";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -21,8 +22,18 @@ const Main = () => {
   }, []);
 
   const loginHandler = (email, password) => {
-    setIsLoggedIn(true);
-    navigate("/");
+    axios
+      .get("/api/user", {
+        params: {
+          id: email,
+        },
+      })
+      .then((res) => {
+        if (res.data[0].ID === email && res.data[0].Password === password) {
+          setIsLoggedIn(true);
+          navigate("/");
+        }
+      });
   };
 
   return (

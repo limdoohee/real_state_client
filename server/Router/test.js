@@ -12,12 +12,25 @@ const pool = mysql.createPool({
   queueLimit: 0,
 });
 
-router.get("/test", (req, res) => {
+router.get("/userList", (req, res) => {
   pool.query("SELECT * FROM member", function (err, rows, fields) {
     // Connection is automatically released when query resolves
     err ? console.log(err) : console.log(rows);
     res.send(rows);
   });
+});
+
+router.get("/user", (req, res) => {
+  const params = req.query.id;
+  pool.query(
+    "SELECT * FROM `member` Where `ID` = ?",
+    params,
+    function (err, rows, fields) {
+      // Connection is automatically released when query resolves
+      err ? console.log(err) : console.log(rows);
+      res.send(rows);
+    }
+  );
 });
 
 module.exports = router;
