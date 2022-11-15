@@ -23,16 +23,21 @@ const Main = () => {
 
   const loginHandler = (email, password) => {
     axios
-      .get("/api/user", {
-        params: {
-          id: email,
-        },
+      .post("/api/login", {
+        id: email,
+        pw: password,
       })
-      .then((res) => {
-        if (res.data[0].ID === email && res.data[0].Password === password) {
-          setIsLoggedIn(true);
-          navigate("/");
-        }
+      // .then((res) => {
+      //   if (res.data[0].ID === email && res.data[0].Password === password) {
+      //     setIsLoggedIn(true);
+      //     navigate("/");
+      //   }
+      // });
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 

@@ -99,6 +99,7 @@ const Login = (props) => {
           value={emailState.value}
           onChange={emailChangeHandler}
           onBlur={validateEmailHandler}
+          autoComplete="username"
         />
       </div>
       <div
@@ -113,6 +114,7 @@ const Login = (props) => {
           value={passwordState.value}
           onChange={passwordChangeHandler}
           onBlur={validatePasswordHandler}
+          autoComplete="current-password"
         />
       </div>
       <div className={classes.actions}>
